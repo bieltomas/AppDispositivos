@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar prestamo</title>
+    <link rel="stylesheet" href="{% static 'informes/crearr.css' %}?version=1">
+</head>
+<body>
+    <h1>Editar prestamo</h1>
+    <br>
+    <div class="botons">
+    <a href="/informes/prestamos/{{obj.id}}">Cancelar</a>
+    <a href="/informes/prestamos">Volver al menu</a>
+    </div>
+    <br>
+    <div class="form">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="boton">Edit</button>
+        </form>
+    </div>
+</body>
+
+</html>

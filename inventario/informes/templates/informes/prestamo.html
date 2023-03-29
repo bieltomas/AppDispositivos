@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestamo</title>
+    <link rel="stylesheet" href="{% static 'informes/prestamo.css' %}?version=1">
+</head>
+
+<body>
+
+    <h1>Prestamo</h1>
+
+    <br>
+    <a href="/informes/prestamos">Volver a todos los prestamos</a>
+    {% if atributos %}
+    <div class="container">
+        <div class="left">
+            <ul>
+                {% for dato in atributos %}
+                <h2>Detalles</h2>
+                <li>DNI Empleado: {{ dato.empleado_id }}</li>
+                <br>
+                <li>Dispositivo: {{dato.Dispositivo}}</li>
+                <br>
+                <li>Identificador: {{dato.Identificador}}</li>
+                <br>
+                <li>Marca: {{ dato.Marca }}</li>
+                <br>
+                <li>Modelo: {{ dato.Modelo }}</li>
+                <br>
+                <li>CPU: {{ dato.CPU }}</li>
+                <br>
+                <li>RAM: {{ dato.RAM }}</li>
+                <br>
+                <li>Almacenamiento: {{ dato.Almacenamiento }}</li>
+                <br>
+                <li>Numero de serie: {{ dato.NumeroSerie }}</li>
+                <br>
+                <li>Observaciones: {{ dato.Observaciones }}</li>
+                <br>
+                <li>Fecha de inicio: {{ dato.FechaInicio }}</li>
+                <br>
+                <li>Fecha de devolución: {{ dato.FechaDevolucion }}</li>
+                <br>
+                <br>
+                <div class="botones">
+                    <div class="botleft">
+                        <p><a href="/informes/prestamos/editar/{{ dato.id }}/">Editar</a></p>
+                    </div>
+                    <div class="botmid">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <a class="borrar" href="/informes/prestamos/delete/{{ dato.id }}">Eliminar</a>
+                        </form>
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No hay nada prestado</p>
+            {% endif %}
+        </div>
+        <div class="right">
+            {% if apps %}
+            <ul>
+                <h2>Aplicaciones</h2>
+                {% for app in apps %}
+                <div class="app">
+                    <div>
+                        <li>{{ app.programa }} - {{ app.detalles }} - {{ app.fecha }}</li>
+                    </div>
+                    <div><a href="/informes/prestamos/delete/apps/{{ app.id }}" class="borrarapp">Eliminar</a></div>
+                </div>
+                <br>
+                {% endfor %}
+                <div class="botones">
+                    {% for dato in atributos %}
+                    <div class="botleft">
+                        <p><a href="/informes/prestamos/crear/apps/{{ dato.id }}">Añadir</a></p>
+                    </div>
+                    <div class="botmid">
+                        {% endfor %}
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
+            </ul>
+            {% else %}
+            <h2>Aplicaciones</h2>
+            <p>No hay nada instalado</p>
+            {% for dato in atributos %}
+            <p><a href="/informes/prestamos/crear/apps/{{ dato.id }}">Añadir</a></p>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</body>
+
+</html>

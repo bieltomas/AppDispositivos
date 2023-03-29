@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear prestamo</title>
+    <link rel="stylesheet" href="{% static 'informes/crearr.css' %}?version=1">
+</head>
+
+<body>
+    <h1>Crear prestamo</h1>
+    <br>
+    <a href="/informes/prestamos">Volver al menu</a>
+    <br>
+    <br>
+    <div class="form">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="formdiv">
+                <label for="empleado">DNI del empleado</label>
+                <br>
+                {{prestamo_form.empleado}}
+            </div>
+            <div class="formdiv">
+                <label for="Dispositivo">Dispositivo</label>
+                <br>
+                {{prestamo_form.Dispositivo}}
+            </div>
+            <div class="formdiv">
+                <label for="Identificador">Identificador</label>
+                <br>
+                {{prestamo_form.Identificador}}
+            </div>
+            <div class="formdiv">
+                <label for="Marca">Marca</label>
+                <br>
+                {{prestamo_form.Marca}}
+            </div>
+            <div class="formdiv">
+                <label for="Modelo">Modelo</label>
+                <br>
+                {{prestamo_form.Modelo}}
+            </div>
+            <div class="formdiv">
+                <label for="CPU">CPU</label>
+                <br>
+                {{prestamo_form.CPU}}
+            </div>
+            <div class="formdiv">
+                <label for="RAM">Memoria RAM</label>
+                <br>
+                {{prestamo_form.RAM}}
+            </div>
+            <div class="formdiv">
+                <label for="Almacenamiento">Almacenamiento</label>
+                <br>
+                {{prestamo_form.Almacenamiento}}
+            </div>
+            <div class="formdiv">
+                <label for="NumeroSerie">Numero de serie</label>
+                <br>
+                {{prestamo_form.NumeroSerie}}
+            </div>
+            <div class="formdiv">
+                <label for="Observaciones">Observaciones</label>
+                <br>
+                {{prestamo_form.Observaciones}}
+            </div>
+            <div class="formdiv">
+                <label for="FechaInicio">Fecha de inicio</label>
+                <br>
+                {{prestamo_form.FechaInicio}}
+            </div>
+            <div class="formdiv">
+                <label for="FechaDevolucion">Fecha de entrega</label>
+                <br>
+                {{prestamo_form.FechaDevolucion}}
+            </div> 
+                <button type="submit" class="boton">Crear</button>
+          </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'informes/loginA.css' %}?version=1">
+</head>
+
+<body>
+    <div class="a">
+        {% block content %}
+        <h1>Inicia sesión</h1>
+        <form method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button class="boto" type="submit">Iniciar sesión ➜</button>
+        </form>
+        {% endblock content %}
+    </div>
+</body>
+
+</html>

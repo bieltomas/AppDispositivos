@@ -1,0 +1,37 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+form{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-left: 1cm;
+}
+
+.formdiv{
+    margin-bottom: 15px;
+}
+
+.boton{
+    width: 3cm;
+    font-size: medium;
+}
+
+label{
+    margin-bottom: 5px;
+    
+}
+
+a{
+    color: #005b9c;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    padding: 20px;
+  }
+  
+  a:hover{
+    color: #002a5a;
+    text-decoration: underline;
+  }

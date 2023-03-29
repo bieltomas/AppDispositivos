@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'informes/inicio.css' %}?version=1">
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <nav>
+        <div class="img">
+            <img src="https://esteling.com/wp-content/uploads/2019/07/estel-ing.png">
+        </div>
+        <p>{{ user.username }}</p>
+        <a class="logout" href="/informes/invitado">Cerrar sesión</a>
+    </nav>
+    <h2>Bienvenido {{user.username}} !</h2>
+    <div class="boto">
+        <a href="/informes/prestamos">Ver todos los dispositivos</a>
+    </div>
+    {% else %}
+    <nav>
+        <div class="img">
+            <img src="https://esteling.com/wp-content/uploads/2019/07/estel-ing.png">
+        </div>
+        <p>Invitado</p>
+        <a class="login" href="/informes/login">Iniciar Sesión</a>
+    </nav>
+    <h2>Identificate para empezar</h2>
+    {% endif %}
+</body>
+
+</html>
